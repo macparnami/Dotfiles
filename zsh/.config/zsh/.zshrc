@@ -53,7 +53,7 @@ export NVM_DIR="$HOME/.config/nvm"
 
 # Evals
 eval "$(zoxide init zsh)"
-
+eval $(keychain --eval  ssh id_ed25519)
 
 #Eza Alias 
 # Replace default ls with eza and show icons
