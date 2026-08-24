@@ -91,3 +91,23 @@ eval $(keychain --eval  ssh id_ed25519)
 #
 # # Sort by extension
 # alias lext="eza -lh --icons --sort=extension"
+
+#Custome Functions //Taskell FZF
+taskp() {
+    local project
+
+    if [[ -z "$1" ]]; then
+        project=$(find ~/Tasks -maxdepth 1 -name '*.md' -printf '%f\n' \
+            | sed 's/\.md$//' \
+            | fzf)
+
+        [[ -z "$project" ]] && return
+    else
+        project="$1"
+    fi
+
+    taskell "$HOME/Tasks/$project.md"
+}
+
+
+. "$HOME/.local/share/../bin/env"
